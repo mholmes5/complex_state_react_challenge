@@ -10,29 +10,33 @@ function App() {
   function updateContactInformation(event) {
     const { value, name } = event.target;
 
-    setContact((prevValue) => {
-      switch (name) {
-        case "fName":
-          return {
-            fName: value,
-            lName: prevValue.lName,
-            email: prevValue.email
-          };
-        case "lName":
-          return {
-            fName: prevValue.fName,
-            lName: value,
-            email: prevValue.email
-          };
-        case "email":
-          return {
-            fName: prevValue.fName,
-            lName: prevValue.lName,
-            email: value
-          };
-        default:
-          break;
-      }
+    // setContact((prevValue) => {
+    //   switch (name) {
+    //     case "fName":
+    //       return {
+    //         fName: value,
+    //         lName: prevValue.lName,
+    //         email: prevValue.email
+    //       };
+    //     case "lName":
+    //       return {
+    //         fName: prevValue.fName,
+    //         lName: value,
+    //         email: prevValue.email
+    //       };
+    //     case "email":
+    //       return {
+    //         fName: prevValue.fName,
+    //         lName: prevValue.lName,
+    //         email: value
+    //       };
+    //     default:
+    //       break;
+    //   }
+    // });
+
+    setContact((contact) => {
+      return { ...contact, [name]: value };
     });
   }
 
