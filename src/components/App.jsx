@@ -11,24 +11,27 @@ function App() {
     const { value, name } = event.target;
 
     setContact((prevValue) => {
-      if (name === "fName") {
-        return {
-          fName: value,
-          lName: prevValue.lName,
-          email: prevValue.email
-        };
-      } else if (name === "lName") {
-        return {
-          fName: prevValue.fName,
-          lName: value,
-          email: prevValue.email
-        };
-      } else {
-        return {
-          fName: prevValue.fName,
-          lName: prevValue.lName,
-          email: value
-        };
+      switch (name) {
+        case "fName":
+          return {
+            fName: value,
+            lName: prevValue.lName,
+            email: prevValue.email
+          };
+        case "lName":
+          return {
+            fName: prevValue.fName,
+            lName: value,
+            email: prevValue.email
+          };
+        case "email":
+          return {
+            fName: prevValue.fName,
+            lName: prevValue.lName,
+            email: value
+          };
+        default:
+          break;
       }
     });
   }
